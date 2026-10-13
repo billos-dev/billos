@@ -1,0 +1,18 @@
+{
+  "name": "billos",
+  "description": "BillOS for coding agents: issue Israeli tax invoices and receipts, record expenses and read the books, with the rules an integration gets wrong.",
+  "owner": {
+    "name": "BillOS",
+    "email": "dev@billos.co.il",
+    "url": "https://billos.co.il"
+  },
+  "plugins": [
+    {
+      "name": "billos",
+      "source": "./plugins/billos",
+      "description": "The BillOS skill (how to integrate the Israeli invoicing API correctly) and the BillOS MCP server (issue documents, record expenses, read the numbers).",
+      "category": "finance",
+      "tags": ["invoicing", "bookkeeping", "israel", "tax", "mcp"]
+    }
+  ]
+}

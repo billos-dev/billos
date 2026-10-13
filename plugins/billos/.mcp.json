@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "billos": {
+      "type": "http",
+      "url": "https://api.billos.co.il/mcp",
+      "headers": {
+        "X-Api-Key": "${user_config.api_key}"
+      }
+    }
+  }
+}

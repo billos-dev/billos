@@ -1,0 +1,23 @@
+{
+  "name": "billos",
+  "displayName": "BillOS",
+  "version": "0.1.0",
+  "description": "Israeli tax invoices and receipts from Claude Code: a skill that teaches the BillOS API (permanent issuing, agorot, credit notes, webhooks) and the BillOS MCP server.",
+  "author": {
+    "name": "BillOS",
+    "email": "dev@billos.co.il",
+    "url": "https://billos.co.il"
+  },
+  "homepage": "https://docs.billos.co.il",
+  "repository": "https://github.com/billos-dev/billos",
+  "license": "MIT",
+  "keywords": ["billos", "invoice", "receipt", "bookkeeping", "israel", "tax", "חשבונית", "קבלה"],
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "BillOS API key",
+      "description": "A bk_test_ key for the free sandbox (run: npx billos sandbox --json) or a bk_live_ key for a real ledger. Used by the MCP server only; the skill works without it.",
+      "sensitive": true
+    }
+  }
+}

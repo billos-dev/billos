@@ -1,0 +1,18 @@
+# Installed dependencies and build output: every example installs its own.
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.venv/
+__pycache__/
+*.pyc
+
+# Lockfiles: the examples are meant to be copied into your project, which keeps its own.
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Secrets. Only .env.example is committed.
+.env
+.env.*
+!.env.example
