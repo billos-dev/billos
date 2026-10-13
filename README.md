@@ -192,4 +192,5 @@ In the BillOS monorepo, `node packages/billos-cli/scripts/sync-kit.mjs` makes th
 
 - Docs: <https://docs.billos.co.il> · for agents: <https://docs.billos.co.il/llms.txt> · OpenAPI: <https://docs.billos.co.il/openapi.json>
 - SDKs: [`billos-sdk`](https://www.npmjs.com/package/billos-sdk) (npm), [`billos`](https://pypi.org/project/billos/) (PyPI) · CLI: [`billos`](https://www.npmjs.com/package/billos) (npm)
+- No code: BillOS for [Zapier](https://dev.billos.co.il/integrations/zapier/) and for [Make](https://dev.billos.co.il/integrations/make/), in early access
 - Source of this kit: <https://github.com/billos-dev/billos>
