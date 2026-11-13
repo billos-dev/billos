@@ -1,0 +1,17 @@
+{
+  "id": 5791028364712,
+  "name": "#1001",
+  "email": "noa@example.com",
+  "currency": "ILS",
+  "financial_status": "paid",
+  "taxes_included": true,
+  "total_price": "598.00",
+  "total_tax": "91.22",
+  "customer": { "id": 7402915583016, "first_name": "נועה", "last_name": "בן דוד", "email": "noa@example.com", "phone": null },
+  "billing_address": { "name": "נועה בן דוד", "company": null, "phone": "050-7654321" },
+  "line_items": [
+    { "id": 14930271845123, "title": "תיק צד", "quantity": 1, "price": "349.00", "total_discount": "0.00", "tax_lines": [ { "price": "53.24", "rate": 0.18, "title": "מע״מ" } ] },
+    { "id": 14930271845124, "title": "ארנק עור", "quantity": 1, "price": "219.00", "total_discount": "0.00", "tax_lines": [ { "price": "33.41", "rate": 0.18, "title": "מע״מ" } ] }
+  ],
+  "shipping_lines": [ { "id": 4821093746512, "title": "משלוח רגיל", "price": "30.00", "tax_lines": [ { "price": "4.58", "rate": 0.18, "title": "מע״מ" } ] } ]
+}

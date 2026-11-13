@@ -23,4 +23,4 @@ node smoke.mjs                 # node smoke.mjs [appUrl] [stubUrl]
 | `STUB_WEBHOOK_URL` | none | where it delivers `document.issued` and `document.paid`; unset, nothing is delivered |
 | `STUB_WEBHOOK_SECRET` | `whsec_stub` | what it signs deliveries with (`X-BillOS-Signature: t=<unix>,v1=<hex HMAC-SHA256 of "<t>.<raw body>">`) |
 
-What it implements: `GET /v1/businesses`, `GET /v1/businesses/:bid`, `POST .../parties/find-or-create`, `POST .../documents` (with `Idempotency-Key`), `GET` and `DELETE .../documents/:id`, `POST .../documents/:id/validate`, `/issue`, `/credit-note`, `/share`, and the public `GET /api/docs/:slug/d.pdf`. `GET /_stub/deliveries` is its own: the log of what it delivered and what the receiver answered.
+What it implements: `GET /v1/businesses`, `GET /v1/businesses/:bid`, `POST .../parties/find-or-create`, `POST .../documents` (with `Idempotency-Key`), `GET` and `DELETE .../documents/:id`, `POST .../documents/:id/validate`, `/issue`, `/credit-note` (with `Idempotency-Key`), `/share`, and the public `GET /api/docs/:slug/d.pdf`. `GET /_stub/deliveries` is its own: the log of what it delivered and what the receiver answered.

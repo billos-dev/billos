@@ -1,0 +1,24 @@
+{
+  "ResponseCode": 0,
+  "Description": "OK",
+  "TerminalNumber": 1000,
+  "LowProfileId": "9c1b7c4e-3f5a-4b0d-8e2a-5d6f7a8b9c0d",
+  "TranzactionId": 20411739,
+  "ReturnValue": "1001",
+  "Operation": "ChargeOnly",
+  "UIValues": { "CardOwnerName": "מיכל שחר", "CardOwnerEmail": "michal@example.com", "CardOwnerPhone": "0531112233", "NumOfPayments": 1 },
+  "TranzactionInfo": {
+    "ResponseCode": 0,
+    "TranzactionId": 20411739,
+    "TerminalNumber": 1000,
+    "Amount": 236.5,
+    "CoinId": 1,
+    "NumberOfPayments": 1,
+    "Last4CardDigits": "0000",
+    "ApprovalNumber": "0012345",
+    "CardOwnerName": "מיכל שחר",
+    "CardOwnerEmail": "michal@example.com",
+    "CardOwnerPhone": "0531112233",
+    "IsRefund": false
+  }
+}

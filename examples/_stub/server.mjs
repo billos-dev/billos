@@ -174,8 +174,11 @@ function createDraft(body, externalRef = null, basedOnId = null) {
   return { ok: true, document: view(doc) }
 }
 
-function creditNote(source, body) {
+function creditNote(source, body, externalRef = null) {
   if (source.status !== 'issued') refuse(409, 'not_draft', 'only an issued document can be corrected')
+  // A credit note sent twice with the same idempotency key is the one already issued.
+  const sent = externalRef && [...documents.values()].find((d) => d.externalRef === externalRef && d.basedOnId === source.id)
+  if (sent) return { ok: true, deduped: true, document: view(sent), source: { id: source.id, cancelledById: source.cancelledById }, warnings: [] }
   if (source.cancelledById) refuse(400, 'validation', 'document is already fully credited')
   const creditType = creditTypeFor(source.docType)
   if (!creditType) refuse(400, 'doc_type_not_allowed', `docType ${source.docType} has no correcting type`)
@@ -192,7 +195,7 @@ function creditNote(source, body) {
   const draft = creditType === 400
     ? negativeReceipt
     : { docType: 330, party, priceMode: 'gross', lines: [{ description: `זיכוי בגין ${source.docType} ${source.docNumber}`, quantity: 1, unitPriceExVat: amount }], note: reason }
-  const issued = issue(documents.get(createDraft(draft, null, source.id).document.id))
+  const issued = issue(documents.get(createDraft(draft, externalRef, source.id).document.id))
   const creditedAmount = prior + amount
   if (creditedAmount >= source.totalIncVat) source.cancelledById = issued.document.id
   const out = { ok: true, document: issued.document, source: { id: source.id, cancelledById: source.cancelledById, creditedAmount, remaining: source.totalIncVat - creditedAmount }, warnings: issued.warnings }
@@ -283,7 +286,7 @@ function route(method, path, body, headers) {
     return [200, { ok: true, valid: true, wouldIssue: { docType: doc.docType, currency: 'ILS', ...t, allocation: 'not_required' }, warnings: [] }]
   }
   if (action === 'issue') return [201, issue(doc)]
-  if (action === 'credit-note') return [201, creditNote(doc, body)]
+  if (action === 'credit-note') return [201, creditNote(doc, body, headers['idempotency-key'] || body.externalRef || null)]
   if (action === 'share') {
     if (doc.status !== 'issued') refuse(409, 'not_draft', 'only an issued document has a PDF')
     // The origin is handed out once; every link after it carries a copy.

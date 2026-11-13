@@ -23,6 +23,8 @@ The response carries the endpoint's `secret` (`whsec_…`), which signs every de
 | `recurring.ran` | a recurring plan produced a draft, issued a document, or failed | `planId`, `runDate`, `outcome`, `documentId`, `docNumber`, `error`, `nextRunOn` |
 | `quote.sent`, `quote.accepted`, `quote.declined` | a quote went out, or the customer answered it | `quoteId`, `number`, `partyName`, `totalIncVat`, `status` |
 | `connection.created`, `connection.revoked` | Connect: a business owner connected or disconnected your app | `connectionId`, `businessId`, `clientId`, `scopes` |
+| `ita.connected`, `ita.disconnected` | the business's owner authorized BillOS at the Tax Authority, or the authorization was removed | `businessId`, `status`, `connected`, `connectedAt`, `expiresAt`, `daysLeft` |
+| `ita.expiring`, `ita.expired` | the 90-day consent ends within 7 days (once per consent), or ended: ask the owner to connect again | same |
 
 Payloads are summaries, not rows: the event says which thing changed, and the full record is one authenticated GET away. `business.status_changed` is worth wiring early: with it `writesOpen: false` reaches the backend before a user meets a 403.
 

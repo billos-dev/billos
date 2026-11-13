@@ -32,7 +32,7 @@ Success is `{"ok": true, …}`. A refusal has the matching HTTP status and this 
 | `doc_type_not_allowed` | 400 | This dealer type may not issue this document type. A `patur` business issues 400 and 300 only |
 | `payments_mismatch` | 400 | Payments do not cover the document total. Make the sum of `payments[].amount` equal the total |
 | `unauthorized` | 401 | Missing, unknown, revoked or expired key. Not fixable by retrying |
-| `forbidden` | 403 | The key lacks the scope; the message names it (`missing scope: documents:write`) |
+| `forbidden` | 403 | The key lacks the scope (the message names it: `missing scope: documents:write`), or the route is not open to it: a sandbox-only route with a live key, a paused business |
 | `approval_required` | 403 | The business's account is not open (`pending` or `suspended`). Issuing, expense recording and uploads are refused. A person has to resolve it with BillOS |
 | `not_found` | 404 | No such resource under this key. A business of another key, or a sandbox id used with a live key, also answers 404 |
 | `not_draft` | 409 | Tried to modify or delete an issued (immutable) document. Correct it with a credit note instead |
@@ -42,6 +42,7 @@ Success is `{"ok": true, …}`. A refusal has the matching HTTP status and this 
 | `allocation_required` | 422 | An invoice over the threshold needs an allocation number and the business requires one |
 | `fx_rate_required` | 422 | A foreign-currency document with no exchange rate to be had. Pass `fxRate` |
 | `rate_limited` | 429 | Too many requests. Wait `Retry-After` seconds |
+| `upgrade_required` | 402 | A free plan reached what it includes (its documents for the month): the business needs a paid plan |
 | `limit_reached` | 429 | A per-business ceiling (the monthly document or expense ceiling, or a daily backstop) |
 | `quota_exceeded` | 429 | The daily OCR quota is spent. It resets at midnight, Asia/Jerusalem |
 | `internal` | 500 | Unexpected server error. Report it with the `request_id` |

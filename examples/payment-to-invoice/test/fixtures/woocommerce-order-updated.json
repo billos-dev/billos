@@ -1,0 +1,22 @@
+{
+  "id": 727,
+  "number": "727",
+  "status": "processing",
+  "currency": "ILS",
+  "prices_include_tax": true,
+  "date_paid": "2026-11-13T09:12:44",
+  "total": "389.90",
+  "total_tax": "59.48",
+  "shipping_total": "25.42",
+  "shipping_tax": "4.58",
+  "payment_method": "stripe",
+  "payment_method_title": "כרטיס אשראי",
+  "transaction_id": "pi_3QJ2abC3dE4fG5hI0kLmNoPq",
+  "billing": { "first_name": "יעל", "last_name": "כהן", "company": "", "email": "yael@example.com", "phone": "0541234567" },
+  "line_items": [
+    { "id": 315, "name": "מנורת שולחן", "quantity": 2, "total": "254.24", "total_tax": "45.76", "price": 127.12 },
+    { "id": 316, "name": "נורה חמה", "quantity": 1, "total": "50.76", "total_tax": "9.14", "price": 50.76 }
+  ],
+  "shipping_lines": [ { "id": 317, "method_title": "משלוח עד הבית", "total": "25.42", "total_tax": "4.58" } ],
+  "fee_lines": []
+}

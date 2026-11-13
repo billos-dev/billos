@@ -1,0 +1,17 @@
+{
+  "id": "evt_1QJ9zzC3dE4fG5hI6jK7lM8n",
+  "object": "event",
+  "type": "refund.created",
+  "data": {
+    "object": {
+      "id": "re_3QJ2abC3dE4fG5hI0xYzAbCd",
+      "object": "refund",
+      "amount": 35000,
+      "charge": "ch_3QJ2abC3dE4fG5hI0AbCdEfG",
+      "currency": "ils",
+      "payment_intent": "pi_3QJ2abC3dE4fG5hI0kLmNoPq",
+      "reason": "requested_by_customer",
+      "status": "succeeded"
+    }
+  }
+}

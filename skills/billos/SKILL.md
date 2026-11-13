@@ -54,6 +54,7 @@ The sandbox is a separate database: nothing is signed, nothing reaches the tax a
 10. **A tax invoice over ₪5,000 before VAT to an identified business needs an allocation number** (מספר הקצאה). Issue answers the `allocation_missing` warning, or `422 allocation_required` when the business set `requireAllocation: true`. Details in [references/documents.md](references/documents.md).
 11. **The key is server-side only.** Call BillOS from a backend route. Never ship the key in a browser bundle or a mobile app.
 12. **Verify webhooks on the raw body**, before parsing it. See [references/webhooks.md](references/webhooks.md).
+13. **A business may keep several document designs** (`GET …/branding-themes`): another logo, colour, page design, phone, email or bank account for a second brand. Pass `brandingThemeId` on a document, a quote or a recurring plan to print in one; omit it and the customer's default (`defaultThemeId` on the party), else the main design, prints. A design never changes who issues: the business's name, tax id and address are on every document, so never open a second business for a second brand of the same dealer.
 
 ## The quickstart: a paid invoice in five calls
 

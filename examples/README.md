@@ -7,6 +7,7 @@ Complete, copyable integrations that issue Israeli tax documents (tax invoices, 
 | [`express-invoicing`](express-invoicing) | Node 20+, Express 5, `billos-sdk` 0.5+ | One server file: validate, issue with a public PDF link, a receipt for an existing invoice, a credit note, a signed webhook receiver. |
 | [`nextjs-invoicing`](nextjs-invoicing) | Next.js 16 App Router, TypeScript, `billos-sdk` 0.5+ | A form and a server action that issues server side (the key never reaches the client), plus the webhook route handler. |
 | [`flask-invoicing`](flask-invoicing) | Python 3.10+, Flask 3, `billos` 0.5+ | The Express example, route for route, in Python. |
+| [`payment-to-invoice`](payment-to-invoice) | Node 20+, no dependencies | A payment arrives, a document goes out: one webhook route each for Stripe, WooCommerce, Shopify, Tranzila, CardCom, PayPlus and Grow, with refunds as credit notes. |
 
 [`_stub`](_stub) is a stand-in server for running the examples with no network. It is not BillOS.
 
@@ -32,6 +33,7 @@ An approved key has no expiry. A `bk_test_` key answers from the sandbox: nothin
 | Issue from a server action, in TypeScript | [`nextjs-invoicing/app/actions.ts`](nextjs-invoicing/app/actions.ts) | |
 | Issue a receipt for an existing invoice (`settles`) | [`express-invoicing/server.js`](express-invoicing/server.js): `POST /payments/:paymentId/receipt` | [`flask-invoicing/app.py`](flask-invoicing/app.py): `issue_receipt` |
 | Correct with a credit note | [`express-invoicing/server.js`](express-invoicing/server.js): `POST /documents/:documentId/credit-note` | [`flask-invoicing/app.py`](flask-invoicing/app.py): `credit_note` |
+| Issue from a payment provider's webhook (Stripe, WooCommerce, Shopify, Tranzila, CardCom, PayPlus, Grow) | [`payment-to-invoice/billos.mjs`](payment-to-invoice/billos.mjs): `issueForPayment`, `creditForRefund`; [`payment-to-invoice/sources/`](payment-to-invoice/sources) | |
 | Verify a webhook | [`express-invoicing/server.js`](express-invoicing/server.js): `POST /webhooks/billos`; [`nextjs-invoicing/app/api/billos/webhook/route.ts`](nextjs-invoicing/app/api/billos/webhook/route.ts) | [`flask-invoicing/app.py`](flask-invoicing/app.py): `billos_webhook` |
 | Validate before issuing | [`express-invoicing/server.js`](express-invoicing/server.js): `POST /orders/:orderId/invoice/validate` | [`flask-invoicing/app.py`](flask-invoicing/app.py): `validate_invoice` |
 | Get the public PDF link | [`express-invoicing/server.js`](express-invoicing/server.js): `pdfLink` | [`flask-invoicing/app.py`](flask-invoicing/app.py): `pdf_link` |

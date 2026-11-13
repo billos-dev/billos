@@ -1,0 +1,12 @@
+{
+  "name": "billos-payment-to-invoice",
+  "private": true,
+  "type": "module",
+  "description": "A payment arrives, a tax document goes out: Stripe, WooCommerce, Shopify, Tranzila, CardCom, PayPlus and Grow to BillOS.",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test"
+  }
+}

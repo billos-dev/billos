@@ -1,0 +1,6 @@
+{
+  "id": 921837465012,
+  "order_id": 5791028364712,
+  "note": "פריט הוחזר",
+  "transactions": [ { "id": 6612093847561, "order_id": 5791028364712, "kind": "refund", "status": "success", "amount": "219.00", "currency": "ILS" } ]
+}

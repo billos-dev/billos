@@ -108,7 +108,21 @@ Body `{"kind": "auto" | "origin" | "copy"}`; the answer is raw `application/pdf`
 
 A tax invoice (305/320) needs an allocation number from the Tax Authority when all of these hold: the amount before VAT exceeds the statutory threshold (₪5,000 since June 2026), the invoice carries VAT, and the buyer is an identified business (it has a `taxId`). Credit notes do not need one. Most consumer flows never reach the threshold.
 
-BillOS applies the same conditions at issue. By default it issues and returns an `allocation_missing` warning. With `PATCH /businesses/:bid {"requireAllocation": true}` issue answers `422 allocation_required` instead. Supply a number you hold as `allocationNumber` on the draft and it prints on the document. In the sandbox the Tax Authority is never called, so both paths are testable. The `document.allocation_assigned` webhook reports a number that arrived after issue.
+For a business connected to the Tax Authority, BillOS requests the number itself during the issue call: it comes back as `allocationNumber`, prints on the document, and `document.allocation_assigned` reports it. A business that is not connected (or an Authority that refuses or does not answer) gets a warning instead: `allocation_missing`, `allocation_not_approved`, `allocation_pending_decision`, `allocation_decision_sent` or `allocation_failed`. With `PATCH /businesses/:bid {"requireAllocation": true}` issue answers `422 allocation_required` instead. A number you hold may also be supplied as `allocationNumber` on the draft. In the sandbox the Tax Authority is never called, so every path is testable.
+
+### Connecting a business to the Tax Authority
+
+The business's OWNER consents once, on the Authority's own page with his own credentials. The integration starts it and gets him back:
+
+```http
+POST /v1/businesses/<bid>/ita/connect
+{"returnUrl":"https://app.example.com/settings/tax","state":"user-1842"}
+201 → {"ok":true,"url":"https://openapi.taxes.gov.il/…","expiresAt":"…","sandbox":false}
+```
+
+Send the owner to `url` (or pass `"link": true` for an address to send him, good for 24 hours). He lands on `returnUrl` with `ita=connected|denied|error`, `business`, your `state` and, on a failure, `reason`. Confirm with `GET /v1/businesses/<bid>/ita` or the `ita.connected` webhook; never trust the query string alone. `returnUrl` must be https (http to localhost in the sandbox), with no fragment or credentials. Only the key that created the business may connect or disconnect (`DELETE /v1/businesses/<bid>/ita`).
+
+A consent lasts 90 days and refreshing does not extend it. `GET …/ita` reads `status`: `not_connected`, `active`, `expiring` (connected, ends within 7 days) or `expired`. Wire `ita.expiring` to a reminder that sends the owner a new `connect` link. In the sandbox `url` opens a simulated consent page, and `POST …/ita/simulate {"state":"expiring"}` (or `"expired"`) moves a connected business to its end so the events can be tried.
 
 ## A receipt that pays invoices
 
