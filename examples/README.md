@@ -7,6 +7,7 @@ Complete, copyable integrations that issue Israeli tax documents (tax invoices, 
 | [`express-invoicing`](express-invoicing) | Node 20+, Express 5, `billos-sdk` 0.5+ | One server file: validate, issue with a public PDF link, a receipt for an existing invoice, a credit note, a signed webhook receiver. |
 | [`nextjs-invoicing`](nextjs-invoicing) | Next.js 16 App Router, TypeScript, `billos-sdk` 0.5+ | A form and a server action that issues server side (the key never reaches the client), plus the webhook route handler. |
 | [`flask-invoicing`](flask-invoicing) | Python 3.10+, Flask 3, `billos` 0.5+ | The Express example, route for route, in Python. |
+| [`php-invoicing`](php-invoicing) | PHP 8.1+, the curl extension, no packages | The Express example, route for route, in PHP: the whole client is one function. |
 | [`payment-to-invoice`](payment-to-invoice) | Node 20+, no dependencies | A payment arrives, a document goes out: one webhook route each for Stripe, WooCommerce, Shopify, Tranzila, CardCom, PayPlus and Grow, with refunds as credit notes. |
 
 [`_stub`](_stub) is a stand-in server for running the examples with no network. It is not BillOS.

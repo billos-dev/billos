@@ -15,7 +15,7 @@ BILLOS_API_KEY=bk_test_stub BILLOS_BASE_URL=http://localhost:4010/v1 BILLOS_WEBH
 node smoke.mjs                 # node smoke.mjs [appUrl] [stubUrl]
 ```
 
-`smoke.mjs` drives the Express and the Flask example, which expose the same routes. It exits non-zero on the first step that does not hold.
+`smoke.mjs` drives the Express, the Flask and the PHP example, which expose the same routes. It exits non-zero on the first step that does not hold.
 
 | Variable | Default | |
 |---|---|---|
